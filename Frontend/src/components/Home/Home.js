@@ -1,37 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Home.css'
 import TextField from '@material-ui/core/TextField'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import { AiOutlineArrowRight } from 'react-icons/ai'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
-import {RiAddBoxLine} from 'react-icons/ri'
+import { RiAddBoxLine } from 'react-icons/ri'
 import { useHistory } from 'react-router-dom';
 import firebase from 'firebase';
-const Home = () => {
-
-   
+const Home = (props) => {
 
 
     var user = firebase.auth().currentUser;
     var fullname, email;
     if (user !== null) {
-      
-        fullname=user.displayName;
+        fullname = user.displayName;
         email = user.email;
-      }
+    }
 
-    
-  
+    const history = useHistory();
+    async function handleLogout() {
+        await firebase.auth().signOut();
+        history.push("/");
+    };
 
-
-const history = useHistory() ;
-         async function handleLogout () {
-            await firebase.auth().signOut();
-            history.push("/");
-            };
-            
-            return (
+    return (
         <div>
             <div className="home">
                 <h4>Welcome {fullname} !</h4>
@@ -53,10 +46,10 @@ const history = useHistory() ;
                     <p>or</p>
                     <div className='line-1'></div>
                 </div>
-                
-                <Button  onClick = { () => {  history.push( { pathname : '/preview'}) } } fullWidth={true} className='btn-meet'>
+
+                <Button onClick={() => { history.push({ pathname: '/preview' }) }} fullWidth={true} className='btn-meet'>
                     <InputAdornment>
-                            <RiAddBoxLine className='btn-icon'  />
+                        <RiAddBoxLine className='btn-icon' />
                     </InputAdornment>
                     New Meet
                 </Button>
