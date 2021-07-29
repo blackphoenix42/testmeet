@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from './components/Header/Header';
 import Signin from './components/Login/Signin'
@@ -16,7 +16,6 @@ class App extends React.Component{
       currentUser:null
     }
   }
-
   unsubscribeFromAuth = null
   componentDidMount(){
     this.unsubscribeFromAuth=auth.onAuthStateChanged(async userAuth=>{
@@ -54,13 +53,11 @@ class App extends React.Component{
     this.unsubscribeFromAuth();
   }
   render(){
-   
+  
   return (
     <div>
-   
-  
+      <Header currentUser={this.state.currentUser}/>
       <Router>
-        <Header/>
         <Switch>
           <Route path='/' exact component={Signin} />
           <Route path='/signin' exact component={Signin} />

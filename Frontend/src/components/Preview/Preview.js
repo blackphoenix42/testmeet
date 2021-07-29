@@ -74,9 +74,9 @@ const Preview = () => {
 
     return (
         <div>
-            <div className="preview-main mt-4 ml-4">
-                <h2 className='heading mt-4'>Room #1</h2>
-                <Card className=''>
+            <div className="preview-main">
+                <h1 className='heading'>Room #1</h1>
+                <Card className='card'>
                     <CardContent className='video'>
                         {UserVideo}
                     </CardContent>

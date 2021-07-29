@@ -14,7 +14,7 @@ const Home = (props) => {
     var user = firebase.auth().currentUser;
     var fullname, email;
     if (user !== null) {
-        fullname =user.displayName.split(' ')[0];
+        fullname = user.displayName;
         email = user.email;
     }
 
@@ -53,7 +53,7 @@ const Home = (props) => {
                     </InputAdornment>
                     New Meet
                 </Button>
-                <Button onClick={handleLogout} className='btn mt-2'>Sign out</Button>
+                <Button onClick={handleLogout} className='btn-meet'>Sign out</Button>
             </div>
         </div>
     );
