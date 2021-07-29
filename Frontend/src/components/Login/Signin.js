@@ -69,67 +69,92 @@ class Signin extends React.Component {
         return (
             <div>
                 <div className="main-body">
-                    <div className="desc">
-                        <h2>Introducing a free and secure video calling service accessible for all.</h2>
-                        <p>For more information, visit {" "}
+                <div className="container d-flex mt-5">
+                    <div className="container mt-5 pb-5">
+                        <h2 className="">
+                            Introduction a free and secure <br></br>video
+                            calling service accessible <br></br> for all
+                        </h2>
+                        <p className="">
+                            for more information, visit{" "}
                             <a
-                                className='text-success'
-                                href={" https://www.pclubmeet.com/ "}>PClub</a>
+                                className="text-success"
+                                href={"https://www.pclubuiet.com/"}
+                            >
+                                PClub
+                            </a>
                         </p>
                     </div>
-                    <div className="card">
-                        <h1>Sign In</h1>
-                        <FormControl className='form' autoComplete="off">
-                            <form onSubmit={this.handleSubmit}>
-                                <Input
-                                    required
-                                    className='input'
-                                    placeholder='Email'
-                                    name='email'
-                                    type="email"
-
-                                    onChange={this.handleChange}
-                                    value={email}
-                                    label="Filled" variant="filled"
-                                    id="input-with-icon-adornment"
-                                    startAdornment={
-                                        <InputAdornment position="start" className='icons'>
-                                            <PersonIcon />
-                                        </InputAdornment>
-                                    }
-                                />
-                                <Input
-                                    required
-                                    className='input'
-                                    placeholder='Password'
-                                    name='password'
-                                    // value={this.state.password}
-                                    value={password}
-                                    onChange={this.handleChange}
-                                    // value={password}
-                                    label="Filled" variant="filled"
-                                    id="input-with-icon-adornment"
-                                    startAdornment={
-                                        <InputAdornment position="start" className='icons'>
-                                            <VpnKeyIcon />
-                                        </InputAdornment>
-                                    }
-                                />
-                                <Button variant="contained" type='submit' className='btn'>Login</Button>
-
-                                <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
-                                <p className='signup'>Don't have an account, {" "}
-                                    <a
-                                        className='text-success'
-                                        href='Signup'>Signup</a>
-                                </p>
+        
+                    <div className="card w-50 mb-5">
+                        <div className="card-header bg-success">
+                            <h3 className="text-center">Sign In</h3>
+                        </div>
+                        <div className="card-body ">
+                        <form onSubmit={this.handleSubmit}>
+                                <div className="input-group form-group">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text">
+                                            <i className="fas fa-user" />
+                                        </span>
+                                    </div>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Email"
+                                        name='email'
+                                        type="email"
+    
+                                        onChange={this.handleChange}
+                                        value={email}
+                                    />
+                                </div>
+                                <div className="input-group form-group">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text">
+                                            <i className="fas fa-key" />
+                                        </span>
+                                    </div>
+                                    <input
+                                        type="password"
+                                        className="form-control"
+                                        placeholder="password"
+                                        name='password'
+                                        value={password}
+                                        onChange={this.handleChange}
+                                    />
+                                </div>
+                                <div className="row align-items-center remember ml-3">
+                                   <p className ="mt-3"> <input type="checkbox"/>
+                                    &nbsp;&nbsp;&nbsp;Remember Me</p>
+                                </div>
+                                <button type="submit" className="btn float-right btn-success">
+                                    Login
+                                </button>
                             </form>
-                        </FormControl>
+                        </div>
+                        <div className="card-footer">
+                            <div className="d-flex justify-content-center links">
+                                Don't have an account? &nbsp;
+                                <a className="text-success" href={"/signup"}>
+                                    Sign Up
+                                </a>
+                            </div>
+                            <div className="d-flex justify-content-center">
+                                <a className="text-success" href="#">
+                                    Forgot your password?
+                                </a>
+                            </div>
+                        </div>
+                        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()}/>
+                    
+                      
+                    </div>
                     </div>
                 </div>
             </div>
+        
         );
     }
 }
-
 export default withRouter(Signin);

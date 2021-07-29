@@ -1,46 +1,48 @@
-import React from 'react';
-import Clock from 'react-live-clock';
-import './Header.css';
-import IconButton from '@material-ui/core/IconButton';
-import { IoMdPerson } from 'react-icons/io';
-import Logo from '../assets/images/Logo.png';
+import React, {useState} from 'react';
 
-import firebase from 'firebase';
-import { useHistory } from 'react-router-dom';
+import './Header.css';
+
+
+
+
 
 
 
 
 
 const Header = ({currentUser}) => {
-  
-    const d = new Date();
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    const weeks = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-  
- 
+    
+    let time = new Date().toLocaleTimeString();
+    const date1 = new Date().toDateString();
+    const [ctime, setctime] = useState(time);
+    const updatetime = () => {
+        time = new Date().toLocaleTimeString();
+        setctime(time);
+    }; 
+   
+    setInterval(updatetime, 1000);
     
     return (
         <div>
-            <section className='main'>
-                <div className="header">
-                    <div className="time">
-                        <Clock format={'hh:mm A'} ticking={true} className='clock' />
-                        <p>{weeks[d.getDay()]}, {months[d.getMonth()]} {d.getDate()}, {d.getFullYear()}</p>
+            <div className="d-flex">
+       <div className="bg-success time float-left">
+                <h4 className="text-light text-center">
+                    &nbsp;&nbsp;{ctime}
+                    <br></br>
+                    {date1}
+                </h4>
+            </div>
+            <div className="container">
+    
+             <img className="logo mt-4" height="130" src="ab.jpg"></img>
+
+                    <div class="vertical float-left mt-4">
+                        <h1 className=" mt-3  pl-3 pt-2">Meet</h1>
                     </div>
-                    <div className="logos">
-               
-                        <img src={Logo} alt="" className='logo' />
-                        <div className="line"></div>
-                        <h1>Meetings</h1>
-                    </div>
-           
-                    <IconButton className='button'>
-                        <IoMdPerson className='icons' />
-                    </IconButton>
-                 
                 </div>
-            </section>
+  
+
+        </div>
         </div>
     );
 }

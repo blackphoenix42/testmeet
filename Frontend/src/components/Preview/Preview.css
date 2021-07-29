@@ -45,7 +45,7 @@
 }
 
 .video {
-    height: 240px;
+    height: 240px !important;
 }
 
 video {

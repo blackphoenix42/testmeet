@@ -1,12 +1,5 @@
 import React from 'react';
-import { FormControl, InputLabel, FormHelperText } from '@material-ui/core';
-import Input from '@material-ui/core/Input';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import PersonIcon from '@material-ui/icons/Person';
-import VpnKeyIcon from '@material-ui/icons/VpnKey';
-import Button from '@material-ui/core/Button'
-import Email from '@material-ui/icons/Email'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+
 import './Signup.css'
 import '../Login/Signin.css'
 import '../Login/Signin'
@@ -59,76 +52,95 @@ handleChange=event=>{
 render(){
     const {displayName,email,password,confirmPassword}=this.state;
     return (
-        <div className="signup-card">
-            <FormControl className='form' onSubmit={this.handleSubmit} autoComplete="off">
-                <h1>Sign Up</h1>
-                <form  onSubmit={this.handleSubmit}>
-                <Input
-                    required
-                    className='input'
-                    name='displayName'
-                    value={displayName}
-                    onChange={this.handleChange}
-                    placeholder='Full name'
-                    label="Filled" variant="filled"
-                    id="input-with-icon-adornment"
-                    startAdornment={
-                        <InputAdornment position="start" className='icons'>
-                            <PersonIcon />
-                        </InputAdornment>
-                    }
-                />
-                <Input
-                    className='input'
-                    name='email'
-                    value={email}
-                    onChange={this.handleChange}
-                    placeholder='Email'
-                    label="Filled" variant="filled"
-                    id="input-with-icon-adornment"
-                    startAdornment={
-                        <InputAdornment position="start" className='icons'>
-                            <Email />
-                        </InputAdornment>
-                    }
-                />
-                <Input
-                    className='input'
-                    placeholder='Password'
-                    name='password'
-                    value={password}
-                    onChange={this.handleChange}
-                    label="Filled" variant="filled"
-                    id="input-with-icon-adornment"
-                    startAdornment={
-                        <InputAdornment position="start" className='icons'>
-                            <AccountCircleIcon/>
-                        </InputAdornment>
-                    }
-                />
+        <div>
+              <div className="container  mt-5">
+                    <div class="card-signup ">
+                        <div className="card-header bg-success">
+                            <h3 className="text-center">Sign Up</h3>
+                        </div>
+                        <div className="card-body ">
+                            <form onSubmit={this.handleSubmit}>
+                                <div className="input-group form-group">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text">
+                                            <i className="fas fa-user" />
+                                        </span>
+                                    </div>
+                                    <input
+                                        type="text"
+                                        name='displayName'
+                                        value={displayName}
+                                        onChange={this.handleChange}
+                                        className="form-control"
+                                        placeholder="Full Name"
+                                    />
+                                </div>
+                                <div className="input-group form-group">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text">
+                                            <i className="fas fa-envelope" />
+                                        </span>
+                                    </div>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        name='email'
+                                        value={email}
+                                        onChange={this.handleChange}
+                                        placeholder="Email"
+                                    />
+                                </div>
+                                <div className="input-group form-group">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text">
+                                            <i className="fas fa-key" />
+                                        </span>
+                                    </div>
+                                    <input
+                                        type="password"
+                                        name='password'
+                                        value={password}
+                                        onChange={this.handleChange}
+                                        className="form-control"
+                                        placeholder="Create a Password"
+                                    />
+                                </div>
 
-                <Input
-                    className='input'
-                    name='confirmPassword'
-                    value={confirmPassword}
-                    onChange={this.handleChange}
-                    placeholder='Confirm Password'
-                    label="Filled" variant="filled"
-                    id="input-with-icon-adornment"
-                    startAdornment={
-                        <InputAdornment position="start" className='icons'>
-                            <VpnKeyIcon />
-                        </InputAdornment>
-                    }
-                />
-                <Button variant="contained" type='submit'className='btn'>Signup</Button>
-                </form>
-                <p className='signup'>Already have an account, {" "}
-                    <a
-                        className='text-success'
-                        href='Signin'>Signin</a>
-                </p>
-            </FormControl>
+                                <div className="input-group form-group">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text">
+                                            <i className="fas fa-key" />
+                                        </span>
+                                    </div>
+                                    <input
+                                        type="password"
+                                        name='confirmPassword'
+                                        value={confirmPassword}
+                                        onChange={this.handleChange}
+                                        className="form-control"
+                                        placeholder="Confirm Password"
+                                    />
+                                </div>
+                                <div className="row align-items-center remember ml-3">
+                                    <p className="mt-3"><input type="checkbox" />{" "}
+                                    &nbsp;&nbsp;&nbsp;Remember Me</p>
+                                </div>
+                                <button type="submit" className="btn float-right btn-success">
+                                    Sign up
+                                </button>
+                            </form>
+                        </div>
+                        <div className="card-footer">
+                            <div className="d-flex justify-content-center links pb-4">
+                                Already have an account?&nbsp;
+                                <a className="text-success" href={"/signin"}>
+                                    Sign In
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+   
         </div>
     );
 }
